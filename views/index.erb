@@ -1,0 +1,28 @@
+<div id="loading">
+  <h2>Loading some grooves...</h2>
+</div>
+<!-- <div class="background" style="background-image: url('/home/blur_image/p1156998.png')"> -->
+
+<div class="overlay"></div>
+<div class="title">
+  <h2><%=@playlists.first["name"]%></h2>
+</div>
+<div class="description">
+  <p><%=@playlists.first["description"]%></p>
+</div>
+<div class="embeds">
+  <iframe src="<%=@playlists.first["iframeUrl"]%>" height="255px" style="border:none;"></iframe>
+</div>
+<div class="backgrounds">
+  <% @playlists.each_with_index do |playlist, index| %>
+    <div class="background <%= index == 0 ? "active" : "" %>" style="background-image: url('/home/blur_image/<%=playlist["key"]%>.png')"></div>
+  <% end %>
+</div>
+<div class="playlists">
+  <% @playlists.each_with_index do |playlist, index| %>
+    <a href="javascript:void(0);" class="<%= index == 0 ? "active" : "" %>" data-title="<%= playlist["name"] %>" data-url="<%=playlist["iframeUrl"]%> " data-description="<%=playlist["description"]%>">
+      <img width="100px" src="<%=playlist["icon"]%>" />
+    </a>
+  <% end %>
+</div>
+<a href="https://github.com/okcscott/RdioPlaylists"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
